@@ -24,11 +24,11 @@ sudo chown -R ubuntu:ubuntu /data/		# -R: recursive
 # Update Nginx configuration to serve the content of /data/web_static/current/ to hbnb_static
 nginx_config="/etc/nginx/sites-available/default"
 if ! grep -q "location /hbnb_static {" "$nginx_config"; then
-	sudo sed -i '/server_name _;/a \
-	\ \ \ \ location /hbnb_static {\n \
-	\ \ \ \ \ \ \ \ alias /data/web_static/current/;\n \
-	\ \ \ \ \ \ \ \ index index.html;\n \
-	\ \ \ \ }' "$nginx_config"
+	sudo sed -i '/server_name _;/a
+			location /hbnb_static {
+				alias /data/web_static/current/;
+				index index.html;
+		}' "$nginx_config"
 fi
 
 # Restart Nginx
